@@ -1,0 +1,39 @@
+package perseverance.li.feignspringboot.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import perseverance.li.feignspringboot.service.IConvertService;
+
+/**
+ * ---------------------------------------------------------------
+ * Author: perseverance_li
+ * Email: perseverance_li@126.com
+ * Create: 2019-12-25 13:32
+ * ---------------------------------------------------------------
+ * Describe:
+ * ---------------------------------------------------------------
+ * Changes:
+ * ---------------------------------------------------------------
+ * 2019-12-25 13:32 : Create by perseverance_li
+ * ---------------------------------------------------------------
+ */
+@RestController
+public class FeignController {
+
+    private Logger logger = LoggerFactory.getLogger(FeignClient.class);
+
+    @Autowired
+    private IConvertService convertService;
+
+    @GetMapping("/check")
+    public String check() {
+        String params = "tels=aa459d06f06724d912bf6d1c04aebee69fb24c68b2cf5acd4f9caba92e4c8c02,cd8ac54f0bb4c4cef5cd030f1705ec9b06fb10ed566fed2c9c3f8102dc393b6d,28e9dbffdd68d5921069ced0db4e83de6dad677aa5bec7a820fd5b390bc51fb0,3f526d5b51a70bc3ec4ca22bb1988ad991a94eca909825ca7f0fdefb16893ef6,c1c35b9298073a5fec471f6293fadc4ef16632ce06cdaf30a732dd47b6a950bf,4d9fab356d441b61699d37d14ef7f2cc28c77fb36177f332a45608b7a6739bd7,5053b84af8f36914a24f9cd05a82c4141d0b7beb3a2696e0d9c0b0523b17d581,669279d9636b7f1dca93e02ea841d45b525b07ba797715a0ede33103837d20ce,676aa171f1e9487d7b8436195209ccd06e0daebf623960a3d7aa3dbf036f8893,233c7f72c905e43aa65643a0ab87fe4dcb759f0dd0e04a0acaa9dd2f22939802,d2f7e124d9aaac9eddacf5802236fa86eb4f0a53ee2c9215c996efb6b3dbf03c,7bc7fe0d33b213072af8f9ea929c37c422fc0436ff977f5ff239b3fa6c7249dd,c1ad599bdbc909b70a19a4729cc5e62fb506fa94680835264099a972b4bff443,c8e3e8f067c4079ab926f2065cb734238fe63ea54e1eb1adae083fe1e553a428,401afbf73a335a49731b963710840d71ca5bca1704845a5546b478d5493d3fb7,1bfcbaf2e3bcfd52546d026c5726186edd6cdee11277954642081468a8b54a51,7250cd9fc7a6b4a94e1ebd4b769e9cdb9faf9ee1f5cd36965f0b145add3aaa7e,82275015b3ec293af3b3fbefda72dd0406d2098ba4e269213f1324fdac661b7b,25c6e7860dc4caca09108a423e47cd363e1e4b7d96cb396e4a451f65c0a5e9fd,cbde9403cea8430a725dd9ce5e36c8d8802494d35a1ef4eae4398f6dea29d67a,00febe39d7de2ad925528bf66d1a9b7cc0c6385eb851c9eb237971288d4dc165,b9ac9938a4be2517dde8955d9582a90eda2515dac82ba983fa6672d2f42219f5,95d8458f0d1b061222ff91177a5311ea676e0899b05d19fe836e6f6eb500d659,396c0b21d1896ee070ce0edb4b72ee1047712345460b07bb84223d92e952206c,8ddf014dfe14c55c7d969492bf44366c4cc5b309be4c5e39f33d394cbbaaad28,baa0e4826125a85b9d6fd9f46a836d651ffdd730ed2740638ff50e8b5d044c5d,9593988dbfc22e5e967aad9ad50d03f1e4082f815ce0a3e6cf47a094db960936,1960423e8a16c11f93eb3e83a4ced67c1ea010f8b34ca091b92fb2a3c401145f,8f210eb34eb78cadd32bc194718c4952a7214e99516e092170ba9e844483e9de,2efae0b2d958272725968109ed5b280a5c08cdca4f8ac06984037e6f6ccca78b,80f7137d2a48b4321a5242d8e3a032b8647f0ebd1a411ea90bedb6c72a804039,9cef2efd3412c9269c06f1d1ce777bec5c867874f64322608227c3b1546a12b6,f614c1b871690873453418a684e70803f49def28641cc8dc89d3b31e4bb9b836,32f2a732330c4fdc8671c4f45945089c1d52aa07aec95210532da96dd698c84b,d854214574ebd243b1bcc44ba2cca41fb73c4ec7080a687a0453fb8b0a3af0e6,dc2e3c258daaa4b4500523eee1fe7220e951f3635da40cf8b70f6e1195b21c65,2916d4344e1539e24f5b9acd797faad6174e117d63712edfcc5358240cbd62e0,2ab905ad4e4793f09bc95577835bfdf7d4e7ade8bb562691b9d5f0524db1b552,3f1a7ffe5ceb05a156e022839fb8c0c8aed2d837839166ffdc466bfced17a214,a67d3f3e1e5a96a3db0f8300f421525227086f9a533a7f5adfdbc0f374f98aae,63ff8904ceca158bf03dbc0005d2b523137ed2d702c22a67f407c1004d12eb64,bf32a07f241764e01c3ac16a751a99ae7da2275b5e5b0308212ab04cafe06c29,b69a14d8d87ce13d5d6bffc053ceca6b8d02b94b7ec6ff3f71a315936f9d41c7,582aadb86cefd526b748519d10b3b050ff217c14fef36231edf2d14ee67e959b,552565824a05ba0015686bed82d2da63ff1daee8c7f32ab18dc653ae95fd9d23,7f4ea5db1738667aa04e3f2112fcb6dc55e788148cdc988b76eb29b89bf436ae,09aca4e78de4589576f1062205fed48e0d2a8aa80077b697db642d65f4fee569,9d1fe164c375f0b1d43660a551555f01fe21135e3371aceb5cf27aaf3b6fa694,b8265b21378afa698e310d1e2a99d04172b750eda153537f727e0f3953269f15,0635f94e8211f49140392795564cb8df8ec9fd330c858aeb1d38d3d99812e345,85b48356b521ad129f9ecbe7d832c44bd6aa8c263bf68573c9daa92b53fc1ec0,c9d9b8ebd65555b77c0f5fd3025a679be330d9d775fbbc9aafb152e9d8f3bf47,34bc0930462b95f09162c1a409e0beb94fc0a07832f6d9f8d8be63cde2cf1aa6,68963a34abef1d199341b6a084e895d5ebc78ca0983a89b62ef4d71ea933a5a5,c2db447f3a7f9ebbbbc980510c232389695e2ead8ba076e69670b507ee787e8e,bac8c550b3da312a1fee07cbd446e7415f2b05a0999db0531346f04501e0b43b,09d69aaa76ee827a7e69ca710ea063e4472fb7b4e9e34f6c6f615fe5be42ddbc,a9d8a89cbf8db5f87ee42a92c4e80bfee3d3ec14d93005d10bb897afdff06f50,12bd85bd4f55417f5a4998e9cbdd37d774620072519cfa31d11e41f3472cbf8c";
+        String iconvert = convertService.iconvert(params);
+        logger.info("iconvert result: " + iconvert);
+        return "OK";
+    }
+}
